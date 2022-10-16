@@ -3,7 +3,8 @@ from datetime import date
 
 class DueDate:
     duedates = []
-    def __init__(self, duedates):
+    def __init__(self, duedates, main):
+        super().__init__(master = main)
         self.duedates = []
         self.create_window()
     def duedate(self):
@@ -56,61 +57,59 @@ class DueDate:
             self.duedates.append(entries[3].get())
 
     def create_window(self):
-        window=tk.Tk()
-        window.title('Add Due Date')
-        window.geometry("750x350+10+20")
+        self.title('Add Due Date')
+        self.geometry("750x350+10+20")
         bgcolor = '#B1D4E0'
         btncolor = '#145DA0'
         textcolor = '#145DA0'
         btntextcolor = '#B1D4E0'
         textbgcolor= '#E7E7E7'
-        window['bg']= bgcolor
+        self.['bg']= bgcolor
         
         labels = self.add_labels()
         entries = self.add_entries()
-        lbltitle=tk.Label(text="Enter Your Assignment/Test",bg = bgcolor, fg= textcolor, font=("Times", 20))
+        lbltitle=tk.Label(self, text="Enter Your Assignment/Test",bg = bgcolor, fg= textcolor, font=("Times", 20))
         lbltitle.pack()
 
-        lbltimereminder=tk.Label(text="Use MM/DD/YY",bg = bgcolor, fg= textcolor, font=("Times", 15))
+        lbltimereminder=tk.Label(self, text="Use MM/DD/YY",bg = bgcolor, fg= textcolor, font=("Times", 15))
         lbltimereminder.place(x=500, y=100)
         
-        lbldiffreminder=tk.Label(text="On a scale of 1 to 3",bg = bgcolor, fg= textcolor, font=("Times", 15))
+        lbldiffreminder=tk.Label(self,text="On a scale of 1 to 3",bg = bgcolor, fg= textcolor, font=("Times", 15))
         lbldiffreminder.place(x=500, y=200)
         
-        addbtn = tk.Button(text="Add", fg=btntextcolor, bg = btncolor, font=("Times", 10), command=lambda: [self.update_dates(entries),window.destroy()])
+        addbtn = tk.Button(self,text="Add", fg=btntextcolor, bg = btncolor, font=("Times", 10), command=lambda: [self.update_dates(entries),self.destroy()])
         addbtn.place(x=330, y=250)
         
-        window.mainloop()
         
     def add_labels(self):
         bgcolor = '#B1D4E0'
         textcolor = '#145DA0'
-        lblaort=tk.Label(text="Assignment or Test?",bg = bgcolor, fg= textcolor, font=("Times", 15))
+        lblaort=tk.Label(self,text="Assignment or Test?",bg = bgcolor, fg= textcolor, font=("Times", 15))
         lblaort.place(x=20, y=50)
         
-        lbltime=tk.Label(text="When is it due?",bg = bgcolor, fg= textcolor, font=("Times", 15))
+        lbltime=tk.Label(self,text="When is it due?",bg = bgcolor, fg= textcolor, font=("Times", 15))
         lbltime.place(x=20, y=100)
 
-        lblclass=tk.Label(text="What class is it for?",bg = bgcolor, fg= textcolor, font=("Times", 15))
+        lblclass=tk.Label(self,text="What class is it for?",bg = bgcolor, fg= textcolor, font=("Times", 15))
         lblclass.place(x=20, y=150)
 
-        lbldifficulty=tk.Label(text="How hard is it?",bg = bgcolor, fg= textcolor, font=("Times", 15))
+        lbldifficulty=tk.Label(self,text="How hard is it?",bg = bgcolor, fg= textcolor, font=("Times", 15))
         lbldifficulty.place(x=20, y=200)
         
         return [lblaort,lbltime,lblclass,lbldifficulty]
     
     def add_entries(self):
         textbgcolor= '#E7E7E7'
-        aortentry= tk.Entry(highlightthickness=2,bg = textbgcolor)
+        aortentry= tk.Entry(self,highlightthickness=2,bg = textbgcolor)
         aortentry.place(x = 275, y= 55)
         
-        timeentry= tk.Entry(highlightthickness=2,bg = textbgcolor)
+        timeentry= tk.Entry(self,highlightthickness=2,bg = textbgcolor)
         timeentry.place(x = 275, y= 105)
 
-        classentry= tk.Entry(highlightthickness=2,bg = textbgcolor)
+        classentry= tk.Entry(self,highlightthickness=2,bg = textbgcolor)
         classentry.place(x = 275, y= 155)
 
-        diffentry= tk.Entry(highlightthickness=2,bg = textbgcolor)
+        diffentry= tk.Entry(self,highlightthickness=2,bg = textbgcolor)
         diffentry.place(x = 275, y= 205)
 
         return [aortentry,timeentry,classentry,diffentry]
