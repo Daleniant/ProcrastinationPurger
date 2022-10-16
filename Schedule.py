@@ -10,9 +10,9 @@ class Schedule:
     daily_hours = []
     existing_schedule = {}
 
-    def __init__(self, time_av, dh):
+    def __init__(self, time_av):
         self.weekly_availability = time_av
-        self.daily_hours = dh
+        self.daily_hours = self.get_daily_hours(time_av)
 
         self.today = date.today()
         self.today = self.today.strftime("%m/%d/%y")
@@ -39,7 +39,6 @@ class Schedule:
             day = current_day.strftime("%m/%d/%y")
             week_day = current_day.weekday()
             self.time_availability[day] = self.time_availability.get(day, self.weekly_availability[week_day])
-            print(day, self.time_availability[day])
 
             current_day = current_day + timedelta(1)
 
@@ -108,6 +107,21 @@ class Schedule:
 
         end_time = (datetime.combine(date(1, 1, 1), start_time) + delta).time()
         return f'{start_time} to {end_time}'
+
+    def get_daily_hours(self, time_av):
+        daily_hours = []
+        for time_interval in time_av:
+            if time_interval == '00:00':
+                daily_hours.append(0)
+                continue
+
+            start_time = datetime.strptime(time_interval[0:5], "%H:%M").time()
+            end_time = datetime.strptime(time_interval[6:], "%H:%M").time()
+
+            difference = datetime.combine(date.min, end_time) - datetime.combine(date.min, start_time)
+            difference = round(difference.total_seconds() / 3600, 2)
+            daily_hours.append(difference)
+        return daily_hours
 
 
 if __name__ == '__main__':
