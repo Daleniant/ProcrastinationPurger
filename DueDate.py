@@ -64,7 +64,7 @@ class DueDate:
         textcolor = '#145DA0'
         btntextcolor = '#B1D4E0'
         textbgcolor= '#E7E7E7'
-        self.['bg']= bgcolor
+        self['bg']= bgcolor
         
         labels = self.add_labels()
         entries = self.add_entries()
