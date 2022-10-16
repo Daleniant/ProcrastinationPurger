@@ -3,7 +3,7 @@ Project for SFU FALL HACKS 10h Hackathon on October 15th, 2022 by Valdislav Miro
 the perfect tool to help you with your crippling procrastination. It uses advanced algorithms to plan out your study sessions so you will never be studying AT THE LAST MINUTE 
 ever again. All you need to do is to input when you are free and any upcoming tests or assignment and it will give you a scheldule detailing exactly when you should study. Remember to refresh after putting in your availability and due dates
 
-To run, download the source code from release 2 V2.0.0 and run main.py from github, download Python 3.9 and following libraries prior to that:
+To run, download the source code(zip archive down below) from release 2 V2.0.0 and run main.py from github, download Python 3.9 and following libraries prior to that:
 1. pandas 
 2. tkinter
 Finally run the application file!
@@ -17,3 +17,4 @@ Press both refresh buttons and follow the schedule!
 Unfortunately due to time restraints we have limited the amount of due dates inputtable to 1
 and it may also have inconsistent proportions on differents screens due tkinter. We also have not fully done error handling so please enter valid inputs.
 
+[ProcrastinationPurger.zip](https://github.com/Daleniant/Hackathon_10-15/files/9793448/ProcrastinationPurger.zip)
