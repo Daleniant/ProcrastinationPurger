@@ -6,4 +6,4 @@ ever again. All you need to do is to input when you are free and any upcoming te
 To run, download the folder from github, download Python and run the application file.
 
 Unfortunately due to time restraints we have limited the amount of due dates inputtable to 1
-and it may also have inconsistent preportions on differents screens due tkinter
+and it may also have inconsistent proportions on differents screens due tkinter
