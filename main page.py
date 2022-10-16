@@ -21,9 +21,8 @@ class MainWindow:
     def create_window(self):
         main = tk.Tk()
         main.title('Procrastination Purger')
-        main.maxsize(width=1400,height=800)
-        main.minsize(width=1400,height=800)
-        #main.geometry("1400x800+10+20")
+        main.maxsize(width=1400, height=800)
+        main.minsize(width=1400, height=800)
         main['bg'] = self.bgcolor
 
         self.add_labels()
@@ -58,10 +57,11 @@ class MainWindow:
         txtarea = tk.Text(main, bg='#E7E7E7', width=33, height=18)
         txtarea.place(x=975, y=200)
 
-        tf = open("placeholdertext.txt", 'r')
-        data = tf.read()
-        txtarea.insert(tk.END, data)
-        tf.close()
+        schedule = self.get_schedule()
+        upcoming = ""
+        for i in range(len(schedule) - 1, 0, -1):
+            upcoming += schedule[i] + "\n"
+        txtarea.insert(tk.END, upcoming)
         txtarea.configure(state='disabled', font=("Times", 15))
 
         txtarea2 = tk.Text(main, bg='#E7E7E7', width=75, height=10)
@@ -75,7 +75,7 @@ class MainWindow:
 
         btnrefresh1 = tk.Button(text="Refresh", bg=self.btncolor, fg=self.btntextcolor, font=("Times", 10),
                                 command=lambda: [self.refresh1(txtarea, main), self.get_schedule()])
-        btnrefresh1.place(x=508, y=535)
+        btnrefresh1.place(x=1200, y=650)
 
         btnrefresh2 = tk.Button(text="Refresh", bg=self.btncolor, fg=self.btntextcolor, font=("Times", 10),
                                 command=lambda: self.refresh2(txtarea2, main))
@@ -93,10 +93,11 @@ class MainWindow:
         txtarea = tk.Text(main, bg='#E7E7E7', width=33, height=18)
         txtarea.place(x=975, y=200)
 
-        tf = open("placeholdertext.txt", 'r')
-        data = tf.read()
-        txtarea.insert(tk.END, data)
-        tf.close()
+        schedule = self.get_schedule()
+        upcoming = ""
+        for i in range(len(schedule) - 1, 0, -1):
+            upcoming += schedule[i] + "\n"
+        txtarea.insert(tk.END, upcoming)
         txtarea.configure(state='disabled', font=("Times", 15))
 
 
@@ -130,7 +131,18 @@ class MainWindow:
             time_av.append(df.at[i, 'Time'])
         print(time_av)
 
-        #schedule = Schedule()
+        schedule = Schedule(time_av).get_schedule()
+        print(schedule)
+
+        sessions = []
+        for i in schedule.index:
+            session_str = schedule.at[i, 'Date'] + ", from "
+            session_str = session_str + schedule.at[i, 'Time'] + ", class: "
+            session_str = session_str + schedule.at[i, "Course"]
+
+            sessions.append(session_str)
+
+        return sessions
 
 if __name__ == '__main__':
     wind = MainWindow()
