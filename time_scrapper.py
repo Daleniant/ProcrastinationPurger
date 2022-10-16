@@ -28,7 +28,7 @@ class TimeScrapper(Toplevel):
      lblex = tk.Label(self, text="Example: 09:00-13:00 (Don't put more than one time interval)", fg='#145DA0', bg = '#B1D4E0',
      font=("Times", 10))
      lblex.place(x=325, y=75)
-     lblex = tk.Label(self, text="Leave the box as 0 if you are not free that day", fg='#145DA0', bg = '#B1D4E0',
+     lblex = tk.Label(self, text="Leave the box as 00:00 if you are not free that day", fg='#145DA0', bg = '#B1D4E0',
      font=("Times", 10))
      lblex.place(x=325, y=125)
 
