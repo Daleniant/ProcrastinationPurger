@@ -11,7 +11,7 @@ class Availability:
             current_av = pandas.read_csv(self.filename)
             return current_av
         except:
-            current_av = pandas.DataFrame({'Day': self.days, 'Time': ['0', '0', '0', '0', '0', '0', '0']})
+            current_av = pandas.DataFrame({'Day': self.days, 'Time': ['00:00', '00:00', '00:00', '00:00', '00:00', '00:00', '00:00']})
             return current_av
 
     def update_file(self, time_input):
