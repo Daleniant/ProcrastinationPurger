@@ -21,7 +21,9 @@ class MainWindow:
     def create_window(self):
         main = tk.Tk()
         main.title('Procrastination Purger')
-        main.geometry("1400x800+10+20")
+        main.maxsize(width=1400,height=800)
+        main.minsize(width=1400,height=800)
+        #main.geometry("1400x800+10+20")
         main['bg'] = self.bgcolor
 
         self.add_labels()
